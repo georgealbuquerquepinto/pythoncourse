@@ -12,6 +12,8 @@ import urllib.request as request
 import zipfile
 import utils as dw
 import os
+from src.utils import validarTelefone
+from src.NumeroTelefoneInvalido import NumeroTelefoneInvalido
 
 def main():
     RESOURCE_URL = "http://repositorio.dados.gov.br/saude/unidades-saude/unidade-basica-saude/ubs.csv.zip"
