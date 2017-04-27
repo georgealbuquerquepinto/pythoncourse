@@ -36,7 +36,7 @@ def extract_filename(filename):
     string = ""
     return string.join(filename)
 
-def read_data(path):
+def loadlistfromcsv(path):
     fdata = open(path, 'rt', encoding="utf8")
     data = []
     for line in fdata:
@@ -45,4 +45,26 @@ def read_data(path):
     fdata.close()
     return data
 
+def create_cidcnes_index(data):
+  dic = {}
 
+  for d in data:
+    dic[d[2]+d[3]] = d
+  return dic
+
+def create_index_from(source, columns_index, *args):
+  dic = {}
+
+  for s in source:
+    key = ""
+    for c in args:
+      key += s[columns_index[c]]
+
+    dic[key] = s
+  return dic
+
+def interpret(line_from_source, **kargs):
+  for i in range(count(kargs)):
+    line_from_source[i] = kargs[i](line_from_source[i])
+
+  return line_from_source
